@@ -68,6 +68,9 @@ func sendUserNotification(_ title: String, _ text: String) {
     let content = UNMutableNotificationContent()
     content.title = title
     content.body = text
+    if #available(macOS 12.0, *) {
+        content.interruptionLevel = .timeSensitive
+    }
 
     let identifier = UUID().uuidString
 
